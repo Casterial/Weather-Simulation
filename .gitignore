@@ -34,3 +34,4 @@ sysinfo.txt
 *.unitypackage
 Weather simulation/Library/
 Weather simulation/Temp/UnityLockfile
+Weather simulation/Temp/
