@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RainSystem : MonoBehaviour
 {
-    //https://docs.unity3d.com/ScriptReference/ParticleSystem.EmissionModule-enabled.html
-    //http://answers.unity3d.com/questions/1135844/unity-5-turning-particles-onoff.html
-    //http://answers.unity3d.com/questions/292745/how-do-i-create-instatiate-an-array-of-gameobjects.html
+/// <summary>
+/// TO DO:
+/// *Make the RainZones move randomly apart, when together rain
+/// *Edit sky boxes, add clouds when rainy
+/// *change lighting based on weather
+/// </summary>
+    public GameObject[] RainZone;
+    public ParticleSystem[] Rain;
+    int i;
 
-
-    public GameObject RainZone1;
-    public GameObject RainZone2;
-
-    public ParticleSystem Rain01;
-    public ParticleSystem Rain02;
 
     // Use this for initialization
     void Start()
@@ -24,10 +24,10 @@ public class RainSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(RainZone1.transform.position, RainZone2.transform.position) < 25.0f)
+        if (Vector3.Distance(RainZone[1].transform.position, RainZone[0].transform.position) < 100.0f)
         {
             RainPlay();
-            Debug.Log("Rain is playing");
+            //Debug.Log("Rain is playing");
         }
         else
         {
@@ -37,12 +37,18 @@ public class RainSystem : MonoBehaviour
 
     void RainPlay()
     {
-        Rain01.Play();
-        Rain02.Play();
+        for (i = 0; i < 2; i++)
+        {
+            Rain[i].GetComponent<ParticleSystem>().enableEmission = true;
+        }
+        
     }
     void RainStop()
     {
-        Rain01.Stop();
-        Rain02.Stop();
+        for (i = 0; i < 2; i++)
+        {
+            Rain[i].GetComponent<ParticleSystem>().enableEmission = false;
+        }
     }
+
 }

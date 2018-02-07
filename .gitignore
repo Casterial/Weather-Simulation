@@ -33,3 +33,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Weather simulation/Library/
+Weather simulation/Temp/UnityLockfile
